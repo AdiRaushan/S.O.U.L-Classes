@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.O.U.L. Classes | Nurturing Souls, Shaping Leaders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0B2C24', // Extra Dark Forest Green
+                        forest: '#1A3C34',  // Deep Forest Green
+                        lime: '#D4FF59',    // Lime Green
+                        mint: '#F4F9F1',    // Light Mint
+                        sage: '#E2F0D9',    // Sage Green
+                        charcoal: '#333333'
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '3rem',
+                    },
+                    animation: {
+                        'marquee': 'marquee 30s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #0B2C24 0%, #1A3C34 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-gradient-soft {
+            background: linear-gradient(180deg, #F4F9F1 0%, #FFFFFF 100%);
+        }
+
+        .mesh-bg {
+            background-color: #F4F9F1;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(80, 100%, 85%, 1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(160, 40%, 90%, 1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(80, 100%, 85%, 1) 0, transparent 50%);
+        }
+
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hover-effect::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+        }
+
+        .btn-hover-effect:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F4F9F1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1A3C34;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-mint text-primary font-sans custom-scrollbar overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-[100] px-4 md:px-8 top-6">
+        <div class="max-w-7xl mx-auto glass border border-white/40 rounded-3xl px-6 md:px-10 py-4 flex justify-between items-center shadow-2xl backdrop-blur-xl">
+            <div class="flex items-center gap-4 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative w-12 h-12 flex items-center justify-center bg-forest rounded-2xl rotate-3 group-hover:rotate-0 transition-all duration-500 shadow-lg">
+                    <svg viewBox="0 0 40 40" class="w-8 h-8 fill-lime">
+                        <path d="M20 5C11.7157 5 5 11.7157 5 20C5 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5 20 5ZM23 26C19.134 26 16 22.866 16 19C16 15.134 19.134 12 23 12C23.5523 12 24 12.4477 24 13C24 13.5523 23.5523 14 23 14C20.2386 14 18 16.2386 18 19C18 21.7614 20.2386 24 23 24C23.5523 24 24 24.4477 24 25C24 25.5523 23.5523 26 23 26ZM20 18C20 17.4477 20.4477 17 21 17C21.5523 17 22 17.4477 22 18V22C22 22.5523 21.5523 23 21 23C20.4477 23 20 22.5523 20 22V18Z" />
+                    </svg>
+                    <div class="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border-2 border-forest"></div>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tighter leading-none">S.O.U.L.</h1>
+                    <span class="text-[10px] uppercase tracking-widest font-black opacity-60">Classes</span>
+                </div>
+            </div>
+            <div class="hidden lg:flex space-x-10 font-medium text-sm uppercase tracking-widest items-center">
+                <a href="#about" class="hover:text-forest transition relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-lime after:transition-all hover:after:w-full">About</a>
+                <a href="#batches" class="hover:text-forest transition relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-lime after:transition-all hover:after:w-full">New Batches</a>
+                <a href="#reviews" class="hover:text-forest transition relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-lime after:transition-all hover:after:w-full">Success Stories</a>
+                <a href="#reviews" class="hover:text-forest transition relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-lime after:transition-all hover:after:w-full">Reviews</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="hidden md:block bg-forest text-white px-8 py-3.5 rounded-2xl text-sm font-bold hover:bg-black transition-all shadow-xl hover:-translate-y-1 btn-hover-effect">
+                    Enroll Now
+                </a>
+                <button class="lg:hidden text-2xl"><i class="fas fa-bars-staggered"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="mesh-bg pt-56 pb-24 px-4 relative">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="relative z-10">
+                <div class="inline-flex items-center gap-2 bg-white/50 backdrop-blur-sm border border-forest/10 text-forest px-4 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-lime animate-pulse"></span>
+                    Now Enrolling for 2026-27
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold leading-[0.9] mb-8 text-forest tracking-tighter">
+                    Education <br> <span class="italic font-light text-lime bg-forest px-6 rounded-3xl py-1 inline-block -rotate-2">Redefined.</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-12 max-w-xl leading-relaxed">
+                    S.O.U.L. Classes isn't just an institute; it's a movement towards <b>Sustainable, Organized, Unique,</b> and <b>Leading</b> education. Your success is our mission.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                    <button class="bg-forest text-white px-10 py-5 rounded-2xl font-bold shadow-2xl hover:bg-black transition-all hover:scale-105 btn-hover-effect flex items-center gap-3">
+                        View Programs <i class="fas fa-arrow-right-long"></i>
+                    </button>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex -space-x-4">
+                            <img src="https://i.pravatar.cc/100?img=11" class="w-12 h-12 rounded-full border-4 border-white shadow-md hover:scale-110 transition cursor-pointer" alt="">
+                            <img src="https://i.pravatar.cc/100?img=12" class="w-12 h-12 rounded-full border-4 border-white shadow-md hover:scale-110 transition cursor-pointer" alt="">
+                            <img src="https://i.pravatar.cc/100?img=13" class="w-12 h-12 rounded-full border-4 border-white shadow-md hover:scale-110 transition cursor-pointer" alt="">
+                            <div class="w-12 h-12 rounded-full border-4 border-white shadow-md bg-lime flex items-center justify-center font-bold text-xs">+99</div>
+                        </div>
+                        <span class="text-sm font-bold opacity-70 tracking-tight">Trust of 1500+ Alumni</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative lg:h-[600px] flex items-center justify-center">
+                <div class="absolute inset-0 bg-lime/20 rounded-full blur-[120px] -z-10 animate-pulse-slow"></div>
+                <div class="relative w-full max-w-lg animate-float">
+                    <img src="assets/images/hero.png" class="rounded-[60px] shadow-[0_50px_100px_-20px_rgba(11,44,36,0.5)] border-4 border-white object-cover aspect-video lg:aspect-square" alt="Modern Classroom">
+                    
+                    <div class="absolute -bottom-10 -right-10 bg-white p-8 rounded-3xl shadow-2xl flex items-center gap-6 border border-sage hover:scale-105 transition-transform duration-500">
+                        <div class="w-16 h-16 bg-lime flex items-center justify-center rounded-2xl"><i class="fas fa-trophy text-forest text-2xl"></i></div>
+                        <div>
+                            <p class="text-3xl font-black text-forest">98%</p>
+                            <p class="text-xs text-slate-400 uppercase font-black tracking-widest">Success Rate</p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute top-10 -left-20 bg-forest/90 backdrop-blur-md p-6 rounded-3xl shadow-2xl hidden xl:flex flex-col gap-2 border border-white/20">
+                        <div class="flex gap-1 text-lime text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-white text-sm font-medium italic">"Best in Lajpat Nagar!"</p>
+                        <p class="text-white/40 text-[10px] uppercase font-bold">- Rahul V.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trust Pillars Banner -->
+    <section class="relative z-20 -mt-10 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-px bg-white/80 backdrop-blur-2xl rounded-[3rem] p-4 shadow-2xl border border-white/40 overflow-hidden">
+            <!-- Pillar 1 -->
+            <div class="flex flex-col md:flex-row items-center gap-4 p-6 md:p-8 hover:bg-mint/50 transition-colors cursor-default group">
+                <div class="w-14 h-14 rounded-2xl bg-sage flex items-center justify-center text-forest group-hover:scale-110 transition-transform duration-500">
+                    <i class="fas fa-users-viewfinder text-2xl"></i>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="font-bold text-forest text-lg leading-tight">Small Batches</h4>
+                    <p class="text-[10px] uppercase font-black tracking-widest text-forest/40">15 Students Max</p>
+                </div>
+            </div>
+            <!-- Pillar 2 -->
+            <div class="flex flex-col md:flex-row items-center gap-4 p-6 md:p-8 hover:bg-mint/50 transition-colors cursor-default group border-l border-forest/5">
+                <div class="w-14 h-14 rounded-2xl bg-sage flex items-center justify-center text-forest group-hover:scale-110 transition-transform duration-500">
+                    <i class="fas fa-chalkboard-user text-2xl"></i>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="font-bold text-forest text-lg leading-tight">Expert Faculty</h4>
+                    <p class="text-[10px] uppercase font-black tracking-widest text-forest/40">12+ Yrs Experience</p>
+                </div>
+            </div>
+            <!-- Pillar 3 -->
+            <div class="flex flex-col md:flex-row items-center gap-4 p-6 md:p-8 hover:bg-mint/50 transition-colors cursor-default group border-l border-forest/5">
+                <div class="w-14 h-14 rounded-2xl bg-sage flex items-center justify-center text-forest group-hover:scale-110 transition-transform duration-500">
+                    <i class="fas fa-hand-holding-dollar text-2xl"></i>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="font-bold text-forest text-lg leading-tight">Scholarships</h4>
+                    <p class="text-[10px] uppercase font-black tracking-widest text-forest/40">Up to 50% Off</p>
+                </div>
+            </div>
+            <!-- Pillar 4 -->
+            <div class="flex flex-col md:flex-row items-center gap-4 p-6 md:p-8 hover:bg-mint/50 transition-colors cursor-default group border-l border-forest/5">
+                <div class="w-14 h-14 rounded-2xl bg-sage flex items-center justify-center text-forest group-hover:scale-110 transition-transform duration-500">
+                    <i class="fas fa-file-signature text-2xl"></i>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="font-bold text-forest text-lg leading-tight">Demo Class</h4>
+                    <p class="text-[10px] uppercase font-black tracking-widest text-forest/40">Book for Free</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About/DNA Section -->
+    <section id="about" class="py-32 px-4 bg-white overflow-hidden relative">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-mint/50 rounded-full blur-[100px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-20 items-stretch">
+                <!-- Image Side -->
+                <div class="lg:w-5/12 relative">
+                    <div class="sticky top-40">
+                        <div class="relative group">
+                            <div class="absolute -inset-4 bg-lime/20 rounded-[4rem] blur-2xl group-hover:bg-lime/30 transition-all duration-700"></div>
+                            <img src="assets/images/about.png" class="relative z-10 rounded-[4rem] shadow-2xl border-8 border-white aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-[1.02]" alt="Our Methodology">
+                            <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-forest rounded-[3rem] -z-10 rotate-12 hidden lg:block shadow-2xl"></div>
+                        </div>
+                        <div class="mt-12 flex items-center gap-6">
+                            <div class="flex flex-col">
+                                <span class="text-4xl font-black text-forest">12+</span>
+                                <span class="text-xs font-black uppercase tracking-widest text-forest/40">Years Excellence</span>
+                            </div>
+                            <div class="w-px h-12 bg-forest/10"></div>
+                            <div class="flex flex-col">
+                                <span class="text-4xl font-black text-forest">5k+</span>
+                                <span class="text-xs font-black uppercase tracking-widest text-forest/40">Alumni Base</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content Side -->
+                <div class="lg:w-7/12 flex flex-col justify-center">
+                    <div class="mb-16">
+                        <h2 class="text-sm font-black uppercase tracking-[0.4em] text-forest/30 mb-6">Our DNA & Philosophy</h2>
+                        <h3 class="text-6xl font-bold mb-8 tracking-tighter leading-[1.1]">What makes us <br><span class="italic font-light text-forest border-b-4 border-lime pb-2">S.O.U.L.ful?</span></h3>
+                        <p class="text-slate-500 text-lg leading-relaxed max-w-xl">
+                            We believe education should be more than just textbooks and exams. Our approach is built on four core pillars that define our success.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- Pillar S -->
+                        <div class="group p-8 bg-mint/30 rounded-[2.5rem] border border-forest/5 hover:bg-forest hover:text-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:bg-lime group-hover:bg-opacity-100 transition-colors">
+                                <span class="text-2xl font-black text-forest">S</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3">Sustainable</h4>
+                            <p class="text-sm opacity-60 group-hover:opacity-80 leading-relaxed">Building foundations that last a lifetime, ensuring long-term academic and personal success.</p>
+                        </div>
+                        <!-- Pillar O -->
+                        <div class="group p-8 bg-mint/30 rounded-[2.5rem] border border-forest/5 hover:bg-forest hover:text-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:bg-lime group-hover:bg-opacity-100 transition-colors">
+                                <span class="text-2xl font-black text-forest">O</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3">Organized</h4>
+                            <p class="text-sm opacity-60 group-hover:opacity-80 leading-relaxed">Meticulously structured curriculum and schedules that remove stress from learning.</p>
+                        </div>
+                        <!-- Pillar U -->
+                        <div class="group p-8 bg-mint/30 rounded-[2.5rem] border border-forest/5 hover:bg-forest hover:text-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:bg-lime group-hover:bg-opacity-100 transition-colors">
+                                <span class="text-2xl font-black text-forest">U</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3">Unique</h4>
+                            <p class="text-sm opacity-60 group-hover:opacity-80 leading-relaxed">Personalized teaching methods tailored to every student's individual learning soul.</p>
+                        </div>
+                        <!-- Pillar L -->
+                        <div class="group p-8 bg-mint/30 rounded-[2.5rem] border border-forest/5 hover:bg-forest hover:text-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:bg-lime group-hover:bg-opacity-100 transition-colors">
+                                <span class="text-2xl font-black text-forest">L</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3">Leading</h4>
+                            <p class="text-sm opacity-60 group-hover:opacity-80 leading-relaxed">Empowering students to become leaders who excel in boards, JEE, and beyond.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- New Batches -->
+    <section id="batches" class="py-32 px-4 bg-mint">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+                <div class="max-w-2xl">
+                    <h2 class="text-sm font-black uppercase tracking-[0.3em] text-forest/40 mb-6">Enrolling Now</h2>
+                    <h3 class="text-5xl font-bold tracking-tighter">Strategic Batches for <span class="italic font-light text-forest">2026-27</span></h3>
+                </div>
+                <div class="hidden md:flex gap-4 mb-2">
+                    <button class="w-14 h-14 rounded-full border border-forest/20 flex items-center justify-center hover:bg-forest hover:text-white transition"><i class="fas fa-chevron-left"></i></button>
+                    <button class="w-14 h-14 rounded-full border border-forest/20 flex items-center justify-center hover:bg-forest hover:text-white transition"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Batch 1 -->
+                <div class="group bg-white p-10 rounded-[40px] shadow-sm hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-slate-100 flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6">
+                        <span class="bg-forest text-lime text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Filling Fast</span>
+                    </div>
+                    <div class="w-20 h-20 bg-mint rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition duration-500">
+                        <i class="fas fa-book-open text-3xl text-forest"></i>
+                    </div>
+                    <span class="text-xs font-black text-forest/40 uppercase tracking-widest mb-2 font-black">April 05 Start</span>
+                    <h4 class="text-2xl font-bold mb-4 tracking-tight">Class 10th Boards</h4>
+                    <p class="text-sm text-slate-500 mb-10 italic leading-relaxed">Comprehensive revision with top-tier educators and predicted papers.</p>
+                    <button class="w-full bg-forest text-white py-4 rounded-2xl font-bold hover:bg-lime hover:text-forest transition-colors flex items-center justify-center gap-2 group/btn">
+                        Enroll Batch <i class="fas fa-arrow-right text-xs group-hover/btn:translate-x-1 transition"></i>
+                    </button>
+                </div>
+
+                <!-- Batch 2 -->
+                <div class="group bg-forest p-10 rounded-[40px] shadow-2xl hover:-translate-y-4 transition-all duration-500 flex flex-col items-center text-center relative overflow-hidden text-white">
+                    <div class="absolute top-0 right-0 p-6">
+                        <span class="bg-lime text-forest text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Premium</span>
+                    </div>
+                    <div class="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition duration-500">
+                        <i class="fas fa-atom text-3xl text-lime"></i>
+                    </div>
+                    <span class="text-xs font-black text-white/40 uppercase tracking-widest mb-2">April 12 Start</span>
+                    <h4 class="text-2xl font-bold mb-4 tracking-tight">JEE Elite Batch</h4>
+                    <p class="text-sm text-white/60 mb-10 italic leading-relaxed">Focused Physics & Maths track for serious Engineering aspirants.</p>
+                    <button class="w-full bg-lime text-forest py-4 rounded-2xl font-bold hover:bg-white transition-colors flex items-center justify-center gap-2 group/btn">
+                        Enroll Batch <i class="fas fa-arrow-right text-xs group-hover/btn:translate-x-1 transition"></i>
+                    </button>
+                    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-lime/20 rounded-full blur-3xl"></div>
+                </div>
+
+                <!-- Batch 3 -->
+                <div class="group bg-white p-10 rounded-[40px] shadow-sm hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-slate-100 flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="w-20 h-20 bg-mint rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition duration-500">
+                        <i class="fas fa-microscope text-3xl text-forest"></i>
+                    </div>
+                    <span class="text-xs font-black text-forest/40 uppercase tracking-widest mb-2 font-black">May 01 Start</span>
+                    <h4 class="text-2xl font-bold mb-4 tracking-tight">NEET Biology</h4>
+                    <p class="text-sm text-slate-500 mb-10 italic leading-relaxed">Master NCERT concepts with interactive 3D visualizations.</p>
+                    <button class="w-full bg-forest text-white py-4 rounded-2xl font-bold hover:bg-lime hover:text-forest transition-colors flex items-center justify-center gap-2 group/btn">
+                        Enroll Batch <i class="fas fa-arrow-right text-xs group-hover/btn:translate-x-1 transition"></i>
+                    </button>
+                </div>
+
+                <!-- Batch 4 -->
+                <div class="group bg-white p-10 rounded-[40px] shadow-sm hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-slate-100 flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="w-20 h-20 bg-mint rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition duration-500">
+                        <i class="fas fa-comments text-3xl text-forest"></i>
+                    </div>
+                    <span class="text-xs font-black text-forest/40 uppercase tracking-widest mb-2 font-black">Open Batch</span>
+                    <h4 class="text-2xl font-bold mb-4 tracking-tight">Spoken English</h4>
+                    <p class="text-sm text-slate-500 mb-10 italic leading-relaxed">Boost confidence and fluency with personality development.</p>
+                    <button class="w-full bg-forest text-white py-4 rounded-2xl font-bold hover:bg-lime hover:text-forest transition-colors flex items-center justify-center gap-2 group/btn">
+                        Enroll Batch <i class="fas fa-arrow-right text-xs group-hover/btn:translate-x-1 transition"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-32 px-4 bg-forest relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <img src="assets/images/reviews.png" class="w-full h-full object-cover" alt="Happy Students">
+        </div>
+        <div class="max-w-7xl mx-auto relative z-10 text-center text-white">
+            <h2 class="text-sm font-black uppercase tracking-[0.4em] text-lime mb-8">Voices of S.O.U.L.</h2>
+            <h3 class="text-5xl md:text-6xl font-bold mb-20 tracking-tighter">Loved by Students, <br> Trusted by Parents.</h3>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-white/5 backdrop-blur-xl p-10 rounded-[40px] border border-white/10 text-left hover:bg-white/10 transition duration-500">
+                    <div class="flex gap-1 text-lime mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-lg leading-relaxed mb-10 italic text-white/80">"The individual attention I received here was unparalleled. The teachers actually care about your progress beyond just the syllabus."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/100?img=33" class="w-12 h-12 rounded-full border-2 border-lime" alt="">
+                        <div>
+                            <h5 class="font-bold">Ananya Sharma</h5>
+                            <p class="text-[10px] uppercase font-bold text-white/40">Class 12th Board (96.4%)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-xl p-10 rounded-[40px] border border-white/10 text-left hover:bg-white/10 transition duration-500">
+                    <div class="flex gap-1 text-lime mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-lg leading-relaxed mb-10 italic text-white/80">"Joining S.O.U.L was the best decision for my JEE prep. The shortcut methods in Maths helped me clear the exam with ease."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/100?img=34" class="w-12 h-12 rounded-full border-2 border-lime" alt="">
+                        <div>
+                            <h5 class="font-bold">Vikram Singh</h5>
+                            <p class="text-[10px] uppercase font-bold text-white/40">IIT-D Aspirant</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-xl p-10 rounded-[40px] border border-white/10 text-left hover:bg-white/10 transition duration-500">
+                    <div class="flex gap-1 text-lime mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-lg leading-relaxed mb-10 italic text-white/80">"My child's confidence has grown immensely. He actually looks forward to his classes now. The environment is really positive."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/100?img=35" class="w-12 h-12 rounded-full border-2 border-lime" alt="">
+                        <div>
+                            <h5 class="font-bold">Mrs. Sunita Verma</h5>
+                            <p class="text-[10px] uppercase font-bold text-white/40">Parent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-32 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-5xl font-bold text-center mb-20 tracking-tighter">Curious? <span class="text-forest">Find Answers.</span></h2>
+            <div class="space-y-6">
+                <details class="group bg-sage/30 p-8 rounded-[30px] border border-forest/5 cursor-pointer hover:border-lime transition-all duration-300">
+                    <summary class="list-none flex justify-between items-center font-bold text-xl tracking-tight">
+                        What is the batch size at S.O.U.L.?
+                        <span class="w-10 h-10 bg-white rounded-full flex items-center justify-center group-open:rotate-45 transition-transform"><i class="fas fa-plus text-sm"></i></span>
+                    </summary>
+                    <p class="mt-6 text-slate-600 leading-relaxed max-w-2xl">
+                        We maintain strictly small batch sizes of <b>12-15 students</b>. This ensures that every individual gets the personal attention they need for deep concept clarity and doubt clearing.
+                    </p>
+                </details>
+                <details class="group bg-sage/30 p-8 rounded-[30px] border border-forest/5 cursor-pointer hover:border-lime transition-all duration-300">
+                    <summary class="list-none flex justify-between items-center font-bold text-xl tracking-tight">
+                        Do you provide study material?
+                        <span class="w-10 h-10 bg-white rounded-full flex items-center justify-center group-open:rotate-45 transition-transform"><i class="fas fa-plus text-sm"></i></span>
+                    </summary>
+                    <p class="mt-6 text-slate-600 leading-relaxed max-w-2xl">
+                        Yes, we provide our proprietary S.O.U.L. Modules, which are curated by expert faculty based on the latest NTA and Board guidelines, including solved years of previous papers.
+                    </p>
+                </details>
+                <details class="group bg-sage/30 p-8 rounded-[30px] border border-forest/5 cursor-pointer hover:border-lime transition-all duration-300">
+                    <summary class="list-none flex justify-between items-center font-bold text-xl tracking-tight">
+                        Can I book a demo class?
+                        <span class="w-10 h-10 bg-white rounded-full flex items-center justify-center group-open:rotate-45 transition-transform"><i class="fas fa-plus text-sm"></i></span>
+                    </summary>
+                    <p class="mt-6 text-slate-600 leading-relaxed max-w-2xl">
+                        Absolutely! We offer two complimentary demo classes. Click on the <b>"Enroll Now"</b> button or contact us on WhatsApp to schedule yours today.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-forest text-white pt-32 pb-12 px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-12 gap-16 mb-24">
+                <div class="lg:col-span-5">
+                    <div class="flex items-center gap-4 mb-10">
+                        <div class="w-16 h-16 flex items-center justify-center bg-lime rounded-2xl rotate-3 shadow-xl">
+                            <svg viewBox="0 0 40 40" class="w-10 h-10 fill-forest">
+                                <path d="M20 5C11.7157 5 5 11.7157 5 20C5 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5 20 5ZM23 26C19.134 26 16 22.866 16 19C16 15.134 19.134 12 23 12C23.5523 12 24 12.4477 24 13C24 13.5523 23.5523 14 23 14C20.2386 14 18 16.2386 18 19C18 21.7614 20.2386 24 23 24C23.5523 24 24 24.4477 24 25C24 25.5523 23.5523 26 23 26ZM20 18C20 17.4477 20.4477 17 21 17C21.5523 17 22 17.4477 22 18V22C22 22.5523 21.5523 23 21 23C20.4477 23 20 22.5523 20 22V18Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-black italic tracking-tighter">S.O.U.L.</h4>
+                            <p class="text-[10px] uppercase font-bold tracking-[0.4em] text-white/40">Shaping Leaders Every Day</p>
+                        </div>
+                    </div>
+                    <p class="text-white/60 text-lg leading-relaxed mb-12 max-w-md">
+                        The ultimate destination for academic excellence in Lajpat Nagar. We don't just teach modules; we build futures with character and depth.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-lime hover:text-forest transition-all border border-white/10"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-lime hover:text-forest transition-all border border-white/10"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-lime hover:text-forest transition-all border border-white/10"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-lime hover:text-forest transition-all border border-white/10"><i class="fab fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <h5 class="font-bold text-lime uppercase tracking-widest text-xs mb-10">Quick Nav</h5>
+                    <ul class="space-y-6 text-white/60">
+                        <li><a href="#about" class="hover:text-white transition">The S.O.U.L Meta</a></li>
+                        <li><a href="#batches" class="hover:text-white transition">Enroll in Batch</a></li>
+                        <li><a href="#success" class="hover:text-white transition">Success Wall</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">Help Center</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <h5 class="font-bold text-lime uppercase tracking-widest text-xs mb-10">Company</h5>
+                    <ul class="space-y-6 text-white/60">
+                        <li><a href="#" class="hover:text-white transition">Privacy Rules</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Learning</a></li>
+                        <li><a href="#" class="hover:text-white transition">Partner with Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3">
+                    <h5 class="font-bold text-lime uppercase tracking-widest text-xs mb-10">Get Expert Updates</h5>
+                    <div class="relative mb-8 group">
+                        <input type="email" placeholder="Email for updates" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 pr-16 focus:outline-none focus:border-lime/50 transition duration-500">
+                        <button class="absolute right-2 top-2 w-12 h-12 bg-lime text-forest rounded-xl flex items-center justify-center hover:bg-white transition shadow-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-[30px] border border-white/10 shadow-2xl">
+                        <p class="text-[10px] uppercase font-black text-white/40 mb-2">Visit our office</p>
+                        <p class="text-sm font-bold text-white mb-1">D-1, Amar Colony,</p>
+                        <p class="text-sm text-white/60">Lajpat Nagar, New Delhi</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-white/40 text-xs font-medium">© 2026 S.O.U.L. Classes. Crafting Future Leaders Globally.</p>
+                <div class="flex gap-8 text-white/40 text-xs font-bold uppercase tracking-widest">
+                    <a href="#" class="hover:text-lime">Privacy</a>
+                    <a href="#" class="hover:text-lime">Cookies</a>
+                    <a href="#" class="hover:text-lime">Security</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Actions -->
+    <div class="fixed bottom-10 right-10 flex flex-col gap-4 z-[999]">
+        <a href="https://wa.me/919811450999" class="w-16 h-16 bg-[#25D366] text-white flex items-center justify-center rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all group relative">
+            <i class="fab fa-whatsapp text-3xl"></i>
+            <span class="absolute right-20 bg-white text-forest px-4 py-2 rounded-xl text-xs font-bold shadow-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Talk to Experts</span>
+        </a>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-16 h-16 bg-white text-forest flex items-center justify-center rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all border border-slate-100">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+</body>
+
+</html>
